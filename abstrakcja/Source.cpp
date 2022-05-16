@@ -8,29 +8,38 @@
 #include<vector>
 
 using namespace std;
+enum class Shape1
+{
+	
+	Triangle ,
+	Circle  ,
+	Trapezoid ,
 
+};
 #include "zad1.h"
+//#include "zad3.h"
 
 int main()
 {
+
+
+
 	int task;
 	cout << "Enter task";
 	cin >> task;
+	int userInput;
+	Shape1 userShape;
 	switch (task)
 	{
 	case 1:
-		zad1();
+		cout << "enter figere rectangle-1,riangle-2,circel-3,trapezoid-4";
+		cin >> userInput;
+		userShape = static_cast<Shape1>(userInput);
+		zad1(userShape);
 		break;
 	default:
 		break;
 	}
-
-
-
-
-
-
-
 
 
 

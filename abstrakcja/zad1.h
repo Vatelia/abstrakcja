@@ -1,33 +1,93 @@
 #pragma once
 
-class Shape
+class shape
 {
 public:
 	virtual double GetArea() = 0;
 	virtual double GetPerimeter() = 0;
 };
-
-class Triangle : public Shape
+class ShapeCalculator :public shape
 {
 public:
-	void Setbase(double base)
+	static void CalculateShapeArea(shape& shape)
+	{
+		shape.GetArea();
+		
+	}
+	static void CalculateShapePerimeter(shape& shape)
+	{
+		shape.GetPerimeter();
+		cout << typeid(shape).name();
+	}
+	/*static void CoutShape(shape& shape)
+	{
+		cout << shape;
+	}*/
+};
+
+
+class trapezoid : public shape
+{
+public:
+	trapezoid(double inputbase1,double inputbase2, double inputbase3, double inputbase4, double inputheight)
+	{
+		setbase1(inputbase1);
+		setbase1(inputbase2);
+		setbase1(inputbase3);
+		setbase1(inputbase4);
+		setheight(inputheight);
+	}
+	void setbase1(double base1)
 	{
 
-		while (base <= 0)
+		while (base1 <= 0)
 		{
-			cout << "ERROR. Width needs to be greater than zero" << endl;
-			cin >> base;
+			cout << "error. width needs to be greater than zero" << endl;
+			cin >> base1;
 		}
 
-		_base = base;
+		_base1 = base1;
+	}
+	void setbase2(double base2)
+	{
+
+		while (base2 <= 0)
+		{
+			cout << "error. width needs to be greater than zero" << endl;
+			cin >> base2;
+		}
+
+		_base2 = base2;
+	}
+	void setbase3(double base3)
+	{
+
+		while (base3 <= 0)
+		{
+			cout << "error. width needs to be greater than zero" << endl;
+			cin >> base3;
+		}
+
+		_base3 = base3;
+	}
+	void setbase4(double base4)
+	{
+
+		while (base4 <= 0)
+		{
+			cout << "error. width needs to be greater than zero" << endl;
+			cin >> base4;
+		}
+
+		_base2 = base4;
 	}
 
-	void SetHeight(double height)
+	void setheight(double height)
 	{
 
 		while (height <= 0)
 		{
-			cout << "ERROR. Width needs to be greater than zero" << endl;
+			cout << "error. width needs to be greater than zero" << endl;
 			cin >> height;
 		}
 
@@ -35,25 +95,39 @@ public:
 	}
 	double GetArea()
 	{
-		_area = (_base * _height) / 2;
+		_area = ((_base1 + _base2) * _height) / 2;
 		return _area;
 	}
+	double GetPerimeter()
+	{
+		_perimeter = _base1 + _base2 + _base3 + _base4;
+		return _perimeter;
+	}
+
 
 private:
-	double _base;
+	double _base1;
+	double _base2;
+	double _base3;
+	double _base4;
 	double _height;
 	double _area;
+	double _perimeter;
 };
 
-class Circle :public Shape
+class circle :public shape
 {
 public:
-	void Setray(double ray)
+	circle(double inputray)
+	{
+		setray(inputray);
+	}
+	void setray(double ray)
 	{
 
 		while (ray <= 0)
 		{
-			cout << "ERROR. Width needs to be greater than zero" << endl;
+			cout << "error. width needs to be greater than zero" << endl;
 			cin >> ray;
 		}
 
@@ -67,41 +141,67 @@ public:
 
 	double GetPerimeter()
 	{
-		return 1;
+		_perimeter = 2 * M_PI * _ray;
+		return _perimeter;
 	}
 
 private:
 	double _ray;
 	double _area;
+	double _perimeter;
 };
 
-class Triangle : public Shape
+class triangle : public shape
 {
 public:
-	Triangle(double inputBase, double inputHeight)
+	triangle(double inputbase, double inputbase1, double inputbase2, double inputheight)
 	{
-		Setbase(inputBase);
-		SetHeight(inputHeight);
+		setbase(inputbase);
+		setbase(inputbase1);
+		setbase(inputbase2);
+		setheight(inputheight);
 	}
 
-	void Setbase(double base)
+	void setbase(double base)
 	{
 
 		while (base <= 0)
 		{
-			cout << "ERROR. Width needs to be greater than zero" << endl;
+			cout << "error. width needs to be greater than zero" << endl;
 			cin >> base;
 		}
 
 		_base = base;
 	}
+	void setbase1(double base1)
+	{
 
-	void SetHeight(double height)
+		while (base1 <= 0)
+		{
+			cout << "error. width needs to be greater than zero" << endl;
+			cin >> base1;
+		}
+
+		_base1 = base1;
+	}
+	void setbase2(double base2)
+	{
+
+		while (base2 <= 0)
+		{
+			cout << "error. width needs to be greater than zero" << endl;
+			cin >> base2;
+		}
+
+		_base2 = base2;
+	}
+
+	void setheight(double height)
 	{
 
 		while (height <= 0)
 		{
-			cout << "ERROR. Width needs to be greater than zero" << endl;
+			cout << "error. width needs to be greater than zero" << endl;
 			cin >> height;
 		}
 
@@ -115,33 +215,70 @@ public:
 
 	double GetPerimeter()
 	{
-		return 1;
+		_perimeter = _base + _base1 + _base2;
+		return _perimeter;
 	}
 
 private:
 	double _base;
+	double _base2;
+	double _base1;
 	double _height;
 	double _area;
+	double _perimeter;
 };
 
-void CalculateShapeArea(Shape& shape)
+void SHAPE1()
+	{
+	trapezoid trapezoid1(1, 2, 3, 3, 4);
+	ShapeCalculator::CalculateShapeArea(trapezoid1);
+	ShapeCalculator::CalculateShapePerimeter(trapezoid1);
+	}
+void SHAPE2()
+	{
+		triangle triangle1(4, 5, 4, 5);
+		ShapeCalculator::CalculateShapeArea(triangle1);
+		ShapeCalculator::CalculateShapePerimeter(triangle1);
+	}
+void SHAPE3()
 {
-	shape.GetArea();
+	circle circle1(4);
+	ShapeCalculator::CalculateShapeArea(circle1);
+	ShapeCalculator::CalculateShapePerimeter(circle1);
+
 }
-
-
-
-
-void zad1()
+void zad1(Shape1 input)
 {
-	Triangle triangle(4,5);
 
-	CalculateShapeArea(triangle);
 
-	Circle circle;
+	switch (input)
+	{
+		case Shape1::Trapezoid:
+			SHAPE1();
+			/*trapezoid trapezoid1(1, 2, 3);
+			ShapeCalculator::CalculateShapeArea(trapezoid);
+			ShapeCalculator::CalculateShapePerimeter(trapezoid);*/
+			break;
+		case Shape1::Triangle:
+			SHAPE2();
+			/*triangle triangle1(4, 5);
+			ShapeCalculator::CalculateShapeArea(triangle);
+			ShapeCalculator::CalculateShapePerimeter(triangle);*/
+			break;
+		case Shape1::Circle:
+			SHAPE3();
+			/*circle circle1(4);
+			ShapeCalculator::CalculateShapeArea(circle);
+			ShapeCalculator::CalculateShapePerimeter(circle);
+			*/
+			
+
+			break;
+		default:
+			break;
+	}
 	
-	circle.Setray(3);
-	CalculateShapeArea(circle);
+	
 }
 
 
@@ -162,10 +299,3 @@ void zad1()
 
 
 
-
-
-
-void  zad1()
-{
-
-}
