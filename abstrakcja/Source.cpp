@@ -8,6 +8,9 @@
 #include<vector>
 
 using namespace std;
+
+#include "zad3.h"
+
 enum class Shape1
 {
 	
@@ -21,9 +24,6 @@ enum class Shape1
 
 int main()
 {
-
-
-
 	int task;
 	cout << "Enter task";
 	cin >> task;
@@ -37,6 +37,8 @@ int main()
 		userShape = static_cast<Shape1>(userInput);
 		zad1(userShape);
 		break;
+	case 3:
+		zad3();
 	default:
 		break;
 	}

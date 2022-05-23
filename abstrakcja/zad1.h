@@ -298,4 +298,3 @@ void zad1(Shape1 input)
 
 
 
-
