@@ -1,5 +1,4 @@
 #pragma once
-
 class shape
 {
 public:
@@ -11,12 +10,11 @@ class ShapeCalculator :public shape
 public:
 	static void CalculateShapeArea(shape& shape)
 	{
-		shape.GetArea();
-		
+		cout<<shape.GetArea();
 	}
 	static void CalculateShapePerimeter(shape& shape)
 	{
-		shape.GetPerimeter();
+		cout<<shape.GetPerimeter();
 		cout << typeid(shape).name();
 	}
 	/*static void CoutShape(shape& shape)
@@ -32,9 +30,9 @@ public:
 	trapezoid(double inputbase1,double inputbase2, double inputbase3, double inputbase4, double inputheight)
 	{
 		setbase1(inputbase1);
-		setbase1(inputbase2);
-		setbase1(inputbase3);
-		setbase1(inputbase4);
+		setbase2(inputbase2);
+		setbase3(inputbase3);
+		setbase4(inputbase4);
 		setheight(inputheight);
 	}
 	void setbase1(double base1)
@@ -79,7 +77,7 @@ public:
 			cin >> base4;
 		}
 
-		_base2 = base4;
+		_base4= base4;
 	}
 
 	void setheight(double height)

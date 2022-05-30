@@ -23,5 +23,8 @@
     <ClInclude Include="zad1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Tester.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
