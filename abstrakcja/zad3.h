@@ -2,14 +2,10 @@ class ICryptography
 {
 	virtual string Encrypt(string plainText) = 0;
 };
-
 class Cezar : ICryptography
 {
-private:
-	int _key;
-
 public:
-	Cezar(int key)
+	 Cezar(int key)
 	{
 		_key = key;
 	}
@@ -17,14 +13,24 @@ public:
 	string Encrypt(string plainText)
 	{
 		string encryptedText = "";
+	
+		
 
-		for (int element : plainText)
+		
+		for (int  element : plainText)
 		{
-			encryptedText += element + _key % 26;
+		//komenda isuppear 
+			cout << element;
+				int chech = _key % 26;
+				encryptedText += element+ chech;
+			
 		}
 
+		
 		return encryptedText;
 	}
+private:
+	int _key;
 };
 
 void zad3()
@@ -38,9 +44,9 @@ void zad3()
 
 	Cezar cezar(key);
 
-	string encryoptedText = cezar.Encrypt(myString);
+	//string encryoptedText1 = Cezar.Encrypt(myString);
+	cout << cezar.Encrypt(myString);
+	//cout << "Encrypted text: " << encryoptedText1;
 
-	cout << "Encrypted text: " << encryoptedText;
-
-	//myChar = char(int(myChar) + 3);
+	
 }

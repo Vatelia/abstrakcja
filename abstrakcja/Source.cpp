@@ -9,7 +9,7 @@
 
 using namespace std;
 
-#include "zad3.h"
+
 
 enum class Shape1
 {
@@ -20,10 +20,12 @@ enum class Shape1
 
 };
 #include "zad1.h"
-//#include "zad3.h"
+#include "zad3.h"
+#include "Tester.h"
 
 int main()
 {
+	
 	int task;
 	cout << "Enter task";
 	cin >> task;
@@ -39,12 +41,16 @@ int main()
 		break;
 	case 3:
 		zad3();
+		break;
+	case 4:
+		vinogron();
+		break;
 	default:
 		break;
 	}
 
 
-
+	
 
 
 
