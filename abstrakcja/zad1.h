@@ -5,16 +5,17 @@ public:
 	virtual double GetArea() = 0;
 	virtual double GetPerimeter() = 0;
 };
-class ShapeCalculator :public shape
+
+class ShapeCalculator
 {
 public:
 	static void CalculateShapeArea(shape& shape)
 	{
-		cout<<shape.GetArea();
+		cout << shape.GetArea();
 	}
 	static void CalculateShapePerimeter(shape& shape)
 	{
-		cout<<shape.GetPerimeter();
+		cout << shape.GetPerimeter();
 		cout << typeid(shape).name();
 	}
 	/*static void CoutShape(shape& shape)

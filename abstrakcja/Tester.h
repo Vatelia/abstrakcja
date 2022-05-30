@@ -1,39 +1,53 @@
-#pragma once
-//class ICryptography1
-//{
-//	virtual string Encrypt(string plainText) = 0;
-//};
+class ICryptography
+{
+public:
+	virtual string Encrypt(string plainText) = 0;
+};
+
 //class  CalculateAll//:ICryptography1
 //{
 //public:
 //	static  void Encrypt(string plainText)
 //	{
 //		cout << plainText;
-//
 //	}
-
 //private:
-
+//
 //};
-class VENO//: ICryptography1
+
+class Vigenere : ICryptography
 {
 public:
-	VENO(string x,string y)
+	Vigenere(string key)
 	{
-		Text(x, y);
-		GetTajny();
+		SetKey(key);
 		GetArray();
-		GetEncrypt();
-
-
 	}
-	string GetEncrypt()
+
+	//string Encrypt(string plainText)
+	//{
+	//	string encryptedText = "";
+
+	//	for (int i = 0; i < plainText.size(); i++)
+	//	{
+	//		if (isupper(plainText[i]))
+	//			encryptedText += (plainText[i] - 65 + _key[i % _key.size()] - 65) % 26 + 65;
+	//		else
+	//			encryptedText += (plainText[i] - 97 + _key[i % _key.size()] - 97) % 26 + 97;
+	//	}
+
+	//	return encryptedText;
+	//}
+
+	string Encrypt(string plainText)
 	{
-		
+		GetTajny(plainText);
+
 		int z = 0;
-		for (int i = 0; i < _mytext.length(); i++)
+
+		for (int i = 0; i < plainText.length(); i++)
 		{
-			char n = _mytext[i];
+			char n = plainText[i];
 			char v = _tajny[i];
 			int h = 0;
 
@@ -48,87 +62,86 @@ public:
 						if (element == v)
 						{
 							 _encryptedtext +=_multiArray[h][m];
-
 						}
+
 						m++;
 					}
-
-
 				}
+
 				h++;
 			}
-
-
-
-
 		}
 
 		return _encryptedtext;
 	}
-	void GetArray()
-	{
 
-		int	w = 0;
 
-		
-		for (int j = 0; j < aba.length(); j++)
-		{
-			for (int i = 0; i < aba.length(); i++)
-			{
+	 void SetKey(string key)
+	 {
+		_key = key;
+	 }
 
-				_multiArray[i][j] = aba[(i + w) % 26];
-				
-
-			}
-			w++;
-		}
-	}
-	void GetTajny()
-	{
-		int k = 0;
-		for (char element : _snicky)
-		{
-			k++;
-		}
-		
-		string tajny;
-		int i = 0;
-
-		for (char element : _mytext)
-		{
-			tajny += _snicky[i % k];
-			i++;
-
-		}
-		tajny = _tajny;
-	}
-	 void Text(string x,string y)
-	{
-		_mytext = x;
-		_snicky = y;
-	}
 private:
-	string _mytext;
-	string _snicky;
+	string _key;
 	string _tajny;
 	string _encryptedtext;
 	string aba = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	array<array<char, 26>, 26> _multiArray;
 
+	void GetArray()
+	{
+		int	w = 0;
+
+		for (int j = 0; j < aba.length(); j++)
+		{
+			for (int i = 0; i < aba.length(); i++)
+			{
+				_multiArray[i][j] = aba[(i + w) % 26];
+			}
+
+			w++;
+		}
+	}
+
+	void GetTajny(string plainText)
+	{
+		int k = 0;
+		for (char element : _key)
+		{
+			k++;
+		}
+
+		string tajny;
+		int i = 0;
+
+		for (char element : plainText)
+		{
+			tajny += _key[i % k];
+			i++;
+
+		}
+		_tajny = tajny;
+	}
+
 };
 void vinogron()
 {
 	string mytext;
-	string snicky;
+	string key;
 	cout << "Enter tekst";
 	cin >> mytext;
 	cout << "ENter word key";
-	cin >> snicky;
+	cin >> key;
 
-	VENO my(mytext, snicky);
-	cout << my.GetEncrypt();
+	Vigenere my(key);
+	cout << my.Encrypt(mytext);
+	cout << my.Encrypt("other");
+	cout << my.Encrypt("rgorg");
+	cout << my.Encrypt("fgdfwerfwe");
 
+	//cout << my.GetEncrypt();
 
+	cout << my.Encrypt("mySuperText");
 
 	
 

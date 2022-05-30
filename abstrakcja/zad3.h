@@ -14,49 +14,35 @@ public:
 	{
 		string encryptedText = "";
 	
-		
-
-		
 		for (int  element : plainText)
 		{
 		//komenda isuppear 
 			
 				int chech = _key % 26;
 				encryptedText += element+ chech;
-			
 		}
-
 		
 		return encryptedText;
 	}
-private:
-	int _key;
-};
 
-class Vigenere : ICryptography
-{
-private:
-	int _key;
-
-public:
-	Vigenere(int key)
+	string Decrypt(string encryptedtext)
 	{
-		_key = key;
-	}
+		string decryptedtext = "";
 
-	string Encrypt(string plainText)
-	{
-		string encryptedText = "";
-
-		for (int element : plainText)
+		for (char character : encryptedtext)
 		{
-			encryptedText += element + _key % 26;
+			if (isupper(character))
+				decryptedtext += (character - 65 - _key + 26) % 26 + 65;
+			else
+				decryptedtext += (character - 97 - _key + 26) % 26 + 97;
 		}
 
-		return encryptedText;
+		return decryptedtext;
 	}
-};
 
+private:
+	int _key;
+};
 
 void zad3()
 {
@@ -73,7 +59,7 @@ void zad3()
 	cout << cezar.Encrypt(myString);
 	//cout << "Encrypted text: " << encryoptedText1;
 
-	cout << "Encrypted text: " << encryoptedText;
+	//cout << "Encrypted text: " << encryoptedText;
 
 	//myChar = char(int(myChar) + 3);
 
