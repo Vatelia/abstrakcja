@@ -247,9 +247,56 @@ void SHAPE3()
 	ShapeCalculator::CalculateShapePerimeter(circle1);
 
 }
-void zad1(Shape1 input)
+
+class ShaperUser
+{
+public:
+	int myPublicNumber = 32;
+
+	//ShaperUser(trapezoid &myCircle)
+	//{
+	//	_myCircle = myCircle;
+	//}
+
+	//void useCircle()
+	//{
+	//	//costam z _myCircle
+	//	_myCircle.GetArea();
+	//}
+	void DisplayFather()
+	{
+		cout << myPrivateNumber;
+	}
+private:
+	int myPrivateNumber = 44;
+	//circle _myCircle;
+
+protected:
+	int myProtectedNumber = 50;
+
+};
+
+class ShaperChild : ShaperUser
 {
 
+public:
+	void Display()
+	{
+		cout << myProtectedNumber;
+	}
+	int ShaperChildNumber = 44444;
+};
+
+
+
+
+void zad1(Shape1 input)
+{
+	ShaperUser myUser;
+	myUser.myPublicNumber = 33;
+
+	ShaperChild myChild;
+	myChild.Display();
 
 	switch (input)
 	{
@@ -276,6 +323,9 @@ void zad1(Shape1 input)
 			break;
 		default:
 			break;
+
+
+
 	}
 	
 	

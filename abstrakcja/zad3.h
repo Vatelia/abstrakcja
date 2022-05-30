@@ -27,6 +27,31 @@ public:
 	}
 };
 
+class Vigenere : ICryptography
+{
+private:
+	int _key;
+
+public:
+	Vigenere(int key)
+	{
+		_key = key;
+	}
+
+	string Encrypt(string plainText)
+	{
+		string encryptedText = "";
+
+		for (int element : plainText)
+		{
+			encryptedText += element + _key % 26;
+		}
+
+		return encryptedText;
+	}
+};
+
+
 void zad3()
 {
 	int key;
@@ -43,4 +68,7 @@ void zad3()
 	cout << "Encrypted text: " << encryoptedText;
 
 	//myChar = char(int(myChar) + 3);
+
+
+
 }
