@@ -1,21 +1,21 @@
 #pragma once
-class ICryptography1
-{
-	virtual string Encrypt(string plainText) = 0;
-};
-class  CalculateAll:ICryptography1
-{
-public:
-	static  void Encrypt(string plainText)
-	{
-		cout << plainText;
+//class ICryptography1
+//{
+//	virtual string Encrypt(string plainText) = 0;
+//};
+//class  CalculateAll//:ICryptography1
+//{
+//public:
+//	static  void Encrypt(string plainText)
+//	{
+//		cout << plainText;
+//
+//	}
 
-	}
+//private:
 
-private:
-
-};
-class VENO: ICryptography1
+//};
+class VENO//: ICryptography1
 {
 public:
 	VENO(string x,string y)
@@ -27,7 +27,7 @@ public:
 
 
 	}
-	void GetEncrypt()
+	string GetEncrypt()
 	{
 		
 		int z = 0;
@@ -63,7 +63,7 @@ public:
 
 		}
 
-
+		return _encryptedtext;
 	}
 	void GetArray()
 	{
@@ -125,8 +125,9 @@ void vinogron()
 	cout << "ENter word key";
 	cin >> snicky;
 
-	VENO sf(mytext, snicky);
-	CalculateAll::Encrypt();
+	VENO my(mytext, snicky);
+	cout << my.GetEncrypt();
+
 
 
 	

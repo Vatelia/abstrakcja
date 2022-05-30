@@ -1,8 +1,8 @@
-class ICryptography
-{
-	virtual string Encrypt(string plainText) = 0;
-};
-class Cezar : ICryptography
+//class ICryptography
+//{
+//	virtual string Encrypt(string plainText) = 0;
+//};
+class Cezar //: ICryptography
 {
 public:
 	 Cezar(int key)
@@ -20,7 +20,7 @@ public:
 		for (int  element : plainText)
 		{
 		//komenda isuppear 
-			cout << element;
+			
 				int chech = _key % 26;
 				encryptedText += element+ chech;
 			
@@ -44,7 +44,7 @@ void zad3()
 
 	Cezar cezar(key);
 
-	//string encryoptedText1 = Cezar.Encrypt(myString);
+	//string encryoptedText1 = cezar.Encrypt(myString);
 	cout << cezar.Encrypt(myString);
 	//cout << "Encrypted text: " << encryoptedText1;
 
